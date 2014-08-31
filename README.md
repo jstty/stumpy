@@ -40,11 +40,11 @@ stumpy.error("miss target");
 
 ## Stumpy - Functions
 
-* `log(...)` - Add/display a log. See (console.log)[https://developer.mozilla.org/en-US/docs/Web/API/console.log] Options
-* `warn(...)` - Add/display a warning. See (console.warn)[https://developer.mozilla.org/en-US/docs/Web/API/console.warn] Options
-* `error(...)` - Add/display a error. See (console.error)[https://developer.mozilla.org/en-US/docs/Web/API/console.error] Options
-* `info(...)` - Add/display a info. See (console.info)[https://developer.mozilla.org/en-US/docs/Web/API/console.info] Options
-* `trace(...)` - Add/display a trace. See (console.trace)[https://developer.mozilla.org/en-US/docs/Web/API/console.trace] Options
+* `log(...)` - Add/display a log. See https://developer.mozilla.org/en-US/docs/Web/API/console.log Options
+* `warn(...)` - Add/display a warning. See https://developer.mozilla.org/en-US/docs/Web/API/console.warn Options
+* `error(...)` - Add/display a error. See https://developer.mozilla.org/en-US/docs/Web/API/console.error Options
+* `info(...)` - Add/display a info. See https://developer.mozilla.org/en-US/docs/Web/API/console.info Options
+* `trace(...)` - Add/display a trace. See https://developer.mozilla.org/en-US/docs/Web/API/console.trace Options
 * `group([name])` - Add/display a group. Optional `name` (default: `group`).
 * `groupEnd()` - Add/display a groupEnd. No parameters.
 * `clearBuffer()` - Clears the in memory buffer.
@@ -68,10 +68,10 @@ The all options have defaults.
 * `syncLogs` - Boolean to enable/disable display of the synchronous logs. Warning: current version errors are sent to stdout NOT stderr. Default: `false`.
 * `display` - Boolean or Object. If set to `true`, all display options are set to true. The Object is a key:value map of all the logging types. Default: `{ log: true,  info: true,  warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`
 * `formatFunc` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
-* `colors` - See [Colors](#colors) Options
-* `group` - See [Group](#group) Options
-* `buffer` - See [Buffer](#buffer) Options
-* `schema` - See [Schema](#schema) Options
+* `colors` - See [Colors](#stumpy---colors-options) Options
+* `group` - See [Group](#stumpy---group-options) Options
+* `buffer` - See [Buffer](#stumpy---buffer-options) Options
+* `schema` - See [Schema](#stumpy---schema-options) Options
 
 ## Stumpy - Colors Options
 
@@ -123,15 +123,19 @@ The all options have defaults.
 ## Stumpy - Examples
 
 [Browser - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/browser/hellocharlie.html)
+
 [Browser - Basic](https://github.com/jstty/stumpy/blob/master/examples/browser/basic.html)
 
 [NodeJS - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/node/hellocharlie.js)
+
 [NodeJS - Basic](https://github.com/jstty/stumpy/blob/master/examples/node/basic.js)
+
 
 
 ## License
 
 What else?
+
 MIT: http://rem.mit-license.org
 
 
