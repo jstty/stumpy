@@ -38,20 +38,6 @@ stumpy.warn("kill %d mice in a day", 26);
 stumpy.error("miss target");
 ```
 
-## Stumpy - Functions
-
-* `log(...)` - Add/display a log. See https://developer.mozilla.org/en-US/docs/Web/API/console.log Options
-* `warn(...)` - Add/display a warning. See https://developer.mozilla.org/en-US/docs/Web/API/console.warn Options
-* `error(...)` - Add/display a error. See https://developer.mozilla.org/en-US/docs/Web/API/console.error Options
-* `info(...)` - Add/display a info. See https://developer.mozilla.org/en-US/docs/Web/API/console.info Options
-* `trace(...)` - Add/display a trace. See https://developer.mozilla.org/en-US/docs/Web/API/console.trace Options
-* `group([name])` - Add/display a group. Optional `name` (default: `group`).
-* `groupEnd()` - Add/display a groupEnd. No parameters.
-* `clearBuffer()` - Clears the in memory buffer.
-* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`.
-* `getRawBuffer()` - Returns the raw buffer (Array of Objects) with all the captured data.
-* `printBuffer()` - Prints each log in the buffer using the `formatFunc`.
-
 ## Stumpy(options)
 
 The first argument can be either an `options` object or a `name` string followed by an `options` object.
@@ -68,14 +54,29 @@ The all options have defaults.
 * `syncLogs` - Boolean to enable/disable display of the synchronous logs. Warning: current version errors are sent to stdout NOT stderr. Default: `false`.
 * `display` - Boolean or Object. If set to `true`, all display options are set to true. The Object is a key:value map of all the logging types. Default: `{ log: true,  info: true,  warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`
 * `formatFunc` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
-* `colors` - See [Colors](#stumpy---colors-options) Options
-* `group` - See [Group](#stumpy---group-options) Options
-* `buffer` - See [Buffer](#stumpy---buffer-options) Options
-* `schema` - See [Schema](#stumpy---schema-options) Options
+* `colors` - See [Colors](#colors-options) Options
+* `group` - See [Group](#group-options) Options
+* `buffer` - See [Buffer](#buffer-options) Options
+* `schema` - See [Schema](#schema-options) Options
 
-## Stumpy - Colors Options
 
-See [Cli-Color](https://github.com/medikoo/cli-color) for color values
+## Functions
+
+* `log(...)` - Add/display a log. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.log" target="_blank">console.log</a> Options
+* `warn(...)` - Add/display a warning. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.warn" target="_blank">console.warn</a> Options
+* `error(...)` - Add/display a error. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.error" target="_blank">console.error</a> Options
+* `info(...)` - Add/display a info. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.info" target="_blank">console.info</a> Options
+* `trace(...)` - Add/display a trace. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.trace" target="_blank">console.trace</a> Options
+* `group([name])` - Add/display a group. Optional `name` (default: `group`).
+* `groupEnd()` - Add/display a groupEnd. No parameters.
+* `clearBuffer()` - Clears the in memory buffer.
+* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`.
+* `getRawBuffer()` - Returns the raw buffer (Array of Objects) with all the captured data.
+* `printBuffer()` - Prints each log in the buffer using the `formatFunc`.
+
+## Colors Options
+
+See [Cli-Color](https://github.com/medikoo/cli-color#colors) for color values
 The all options have defaults.
 
 * `log` - String or Cli-Color Object. Default: `"whiteBright"`
@@ -87,7 +88,7 @@ The all options have defaults.
 * `groupEnd` - String or Cli-Color Object. Default: `"green"`
 
 
-## Stumpy - Group Options
+## Group Options
 
 Used to generate the Group Trees for NodeJS
 The all options have defaults.
@@ -96,7 +97,7 @@ The all options have defaults.
 * `indent` - Object containing the string parts used to the Group Tree for NodeJS
 
 
-## Stumpy - Buffer Options
+## Buffer Options
 
 Used to configure the buffer.
 The all options have defaults.
@@ -108,7 +109,7 @@ The all options have defaults.
 * `deepCopy` - Boolean to enable/disable deep copy of objects stored in the buffer. The default is false to consume less memory, however objects are referenced so they could change from the original log. Default: `false`.
 
 
-## Stumpy - Schema Options
+## Schema Options
 
 Used to configure the environment schemas. This is an object of environments, default: `dev`,`stage`, and `prod`.
 When an `env` string is set, all keys in the matching schema key are applied over all other options in the base options.
@@ -120,7 +121,7 @@ The all options have defaults.
 
 
 
-## Stumpy - Examples
+## Examples
 
 [Browser - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/browser/hellocharlie.html)
 
@@ -134,9 +135,9 @@ The all options have defaults.
 
 ## License
 
-What else?
+MIT: what else?
 
-MIT: http://rem.mit-license.org
+[Full license go go go! &raquo;](LICENSE)
 
 
 ## Blah blah blah... Tests
