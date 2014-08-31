@@ -1,6 +1,16 @@
 # Stumpy - The Kickass Logger!
 [![Build Status](https://secure.travis-ci.org/jstty/stumpy.png)](http://travis-ci.org/jstty/stumpy) [![Dependency Status](https://david-dm.org/jstty/stumpy.png?theme=shields.io)](https://david-dm.org/jstty/stumpy) [![devDependency Status](https://david-dm.org/jstty/stumpy/dev-status.png?theme=shields.io)](https://david-dm.org/jstty/stumpy#info=devDependencies) [![NPM](https://nodei.co/npm/stumpy.png)](https://nodei.co/npm/stumpy/)
 
+## Features
+* Highly configurable
+* Buffered Output
+* Custom Log format
+* Schemas based on Environments
+* NodeJs Only, sorry browsers
+  * Groups (with pretty tree style)
+  * Colors!
+  * Optional All Logs Async (even Errors)
+
 ## NPM
 ```sh
 $ npm install stumpy
@@ -12,16 +22,6 @@ $ bower install stumpy
 ```
 
 ## Usage
-
-### Basic
-```js
-var stumpy = Stumpy();
-
-stumpy.log("test");
-stumpy.info("test: %s", "string");
-stumpy.warn("test: %d", 123);
-stumpy.error("test error: %d", 123);
-```
 
 ### Hello Charlie!
 ```js

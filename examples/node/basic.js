@@ -2,6 +2,9 @@ var Stumpy   = require('../../lib/stumpy.js');
 
 var stumpy = Stumpy("basic", {
     showTrace: true,
+    showLogId: true,
+    showLogType: true,
+    syncLogs: true, // warning: this will not write logs to stderr
     buffer: {
         size: 8,
         showTrace: true

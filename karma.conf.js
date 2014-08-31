@@ -3,6 +3,7 @@
 module.exports = function(config) {
     config.set({
         files: [
+            './node_modules/sprintf-js/src/sprintf.js',
             './lib/stumpy.js',
             'test/*.js'
         ],
