@@ -1,11 +1,14 @@
 var Stumpy = require('../../lib/stumpy.js');
-Stumpy("World Domination", {
+var stumpy = Stumpy("Show EVERYTHING", {
     replaceConsole: true,
-    syncLogs: true
+    showTrace: true,
+    showLogId: true,
+    showLogType: true,
+    syncLogs: true // warning: this will not write logs to stderr
 });
 
 console.log("----------------------------------------------------------");
-console.log("-- Stumpy - Hello Charlie! --");
+console.log("-- Stumpy - Show EVERYTHING --");
 console.log("----------------------------------------------------------");
 console.log("test");
 console.info("test: %s", "string");
@@ -28,4 +31,3 @@ console.groupEnd();
 console.groupEnd();
 
 console.log( { after: "group", a: [1,2,3,4,5,6,7,8,9,0] } );
-

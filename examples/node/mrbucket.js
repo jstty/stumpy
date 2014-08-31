@@ -1,9 +1,5 @@
 var Stumpy = require('../../lib/stumpy.js');
-var stumpy = Stumpy("basic", {
-    showTrace: true,
-    showLogId: true,
-    showLogType: true,
-    syncLogs: true, // warning: this will not write logs to stderr
+var stumpy = Stumpy(" Buffers oh My!", {
     buffer: {
         size: 8,
         showTrace: true
@@ -11,7 +7,7 @@ var stumpy = Stumpy("basic", {
 });
 
 console.log("----------------------------------------------------------");
-console.log("-- Stumpy - Basic --");
+console.log("-- Stumpy - Buffers oh My! --");
 console.log("----------------------------------------------------------");
 stumpy.log("test");
 stumpy.info("test: %s", "string");

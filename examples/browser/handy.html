@@ -3,14 +3,17 @@
 <script src="moment.min.js"></script>
 <script src="../../lib/stumpy.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<pre id="stumpy">-- Stumpy - Basic --
+<pre id="stumpy">-- Stumpy - Logs --
+</pre>
+
+<pre id="stumpy-removed">-- Stumpy - Removed from Buffer --
 </pre>
 
 <script>
 
-var stumpy = Stumpy("basic", {
+var stumpy = Stumpy("Custom Handlers", {
     display: true,
-    formatFunc: function(options, log) {
+    formatFunc: function(log, options) {
         var out = [];
         var a = 0;
 
@@ -32,11 +35,11 @@ var stumpy = Stumpy("basic", {
         }
 
         return out;
-    }
-	,buffer: {
+    },
+	buffer: {
 		size: 8,
         showTrace: true,
-        formatFunc: function(options, log) {
+        formatFunc: function(log) {
             var out = [];
             var a = 0;
 
@@ -64,11 +67,25 @@ var stumpy = Stumpy("basic", {
 
             return out;
         }
-	}
+	},
+    onHandlers: {
+        addLog: function (logStr, logObj) {
+            $('#stumpy').append(logStr + '\n');
+        },
+        delLog: function (logStr, logObj) {
+            $('#stumpy-removed').append(logStr + '\n');
+        },
+        addBuffer: function (logStr, logObj) {
+            console.log("addBuffer:", logObj);
+        },
+        delBuffer: function (logStr, logObj) {
+            console.log("delBuffer:", logObj);
+        }
+    }
 });
 
 console.log("----------------------------------------------------------");
-console.log("-- Log Output --");
+console.log("-- Stumpy - Custom Handlers --");
 console.log("----------------------------------------------------------");
 stumpy.log("test");
 stumpy.info("test: %s", "string");
@@ -91,26 +108,6 @@ stumpy.group();
 stumpy.groupEnd();
 
 stumpy.log( { after: "group", a: [1,2,3,4,5,6,7,8,9,0] } );
-
-console.log("----------------------------------------------------------");
-console.log("-- Dumping Buffered Output --");
-console.log("----------------------------------------------------------");
-var dump = stumpy.getBuffer();
-dump = dump.join("\n");
-$('#stumpy').append(dump);
-console.log(dump);
-
-console.log("----------------------------------------------------------");
-console.log("-- Pretty Printing Buffered Output --");
-console.log("----------------------------------------------------------");
-stumpy.printBuffer();
-
-console.log("----------------------------------------------------------");
-console.log("-- Dumping Raw Buffered Output --");
-console.log("----------------------------------------------------------");
-var rawdump = stumpy.getRawBuffer();
-$('#stumpy').append( rawdump );
-console.log(rawdump);
 
 </script>
 </html>

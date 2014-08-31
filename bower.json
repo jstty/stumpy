@@ -1,6 +1,6 @@
 {
     "name": "Stumpy",
-    "version": "0.5.4",
+    "version": "0.6.0",
     "main": "lib/stumpy.js",
     "ignore": [
         "node_modules",

@@ -2,11 +2,12 @@
 [![Build Status](https://secure.travis-ci.org/jstty/stumpy.png)](http://travis-ci.org/jstty/stumpy) [![Dependency Status](https://david-dm.org/jstty/stumpy.png?theme=shields.io)](https://david-dm.org/jstty/stumpy) [![devDependency Status](https://david-dm.org/jstty/stumpy/dev-status.png?theme=shields.io)](https://david-dm.org/jstty/stumpy#info=devDependencies) [![NPM](https://nodei.co/npm/stumpy.png)](https://nodei.co/npm/stumpy/)
 
 ## Features
-* Highly configurable
+* Highly Configurable
 * Module based Log Names
     * Different module can be given a name to make it easier to find the culprit
 * Buffered Output
     * Allows you to ship the logs off to the local sawmill or whittle a cat out of them
+    * Buffers are currently, per instance
 * Customizable Log Format
     * Standard output across all parts of your application
 * Schemas Based on Environments
@@ -15,8 +16,15 @@
   * Colors (double rainbows!)
   * Optional All Logs Synchronise
     * Warning: current version errors are sent to stdout NOT stderr
-    * Future version will fix this
   * All Logs with Trace Information
+
+
+## In the Year 2000... (Distant Future Features)
+* A String version of the Customizable Log Format
+* Transports for both NodeJs and Browser
+* Fix NodeJs Logs Synchronise to send output errors using stderr (small buffer)
+* Global and per instance Buffers
+
 
 ## NPM
 ```sh
@@ -40,7 +48,7 @@ stumpy.error("miss target");
 
 ## Stumpy(options)
 
-The first argument can be either an `options` object or a `name` string followed by an `options` object.
+The first argument can be either an `options` Object or a `name` string followed by an `options` object.
 The all options have defaults.
 
 * `name` - String used to when displaying a log. Default: `""`.
@@ -53,11 +61,12 @@ The all options have defaults.
 * `showLogType` - Boolean to enable/disable display of the log type ('log', 'warn', 'error', 'info', 'trace', 'group', or 'groupEnd'). Default: `false`.
 * `syncLogs` - Boolean to enable/disable display of the synchronous logs. Warning: current version errors are sent to stdout NOT stderr. Default: `false`.
 * `display` - Boolean or Object. If set to `true`, all display options are set to true. The Object is a key:value map of all the logging types. Default: `{ log: true,  info: true,  warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`
-* `formatFunc` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
-* `colors` - See [Colors](#colors-options) Options
-* `group` - See [Group](#group-options) Options
-* `buffer` - See [Buffer](#buffer-options) Options
-* `schema` - See [Schema](#schema-options) Options
+* `formatFunc(log<Object>, logInstanceOptions<Object>)` - The Function used to format the logs when `getBuffer`, `onHandlers.addLog` and `onHandlers.delLog` is called or on all log output. Default: `null`.
+* `onHandlers` - An Object. See [Event Handler](#event-handler-options) Options
+* `colors` - An Object. See [Colors](#colors-options) Options
+* `group` - An Object. See [Group](#group-options) Options
+* `buffer` - An Object. See [Buffer](#buffer-options) Options
+* `schema` - An Object. See [Schema](#schema-options) Options
 
 
 ## Functions
@@ -70,9 +79,12 @@ The all options have defaults.
 * `group([name])` - Add/display a group. Optional `name` (default: `group`).
 * `groupEnd()` - Add/display a groupEnd. No parameters.
 * `clearBuffer()` - Clears the in memory buffer.
-* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`.
+* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`. Warning browser users: `getBuffer()` may not return expected results unless you include the (sprintf)[https://github.com/alexei/sprintf.js] library.
 * `getRawBuffer()` - Returns the raw buffer (Array of Objects) with all the captured data.
 * `printBuffer()` - Prints each log in the buffer using the `formatFunc`.
+* `setEnv()` - Sets the current environment and applies the schema.
+* `getOptions()` - Returns all current options (including schema) with environment applied.
+* `setOptions(options)` - Merges/applies options on current options, if env is set it will applied the environment schema.
 
 ## Colors Options
 
@@ -103,7 +115,7 @@ Used to configure the buffer.
 The all options have defaults.
 
 * `size` - Integer size of the log buffer. A `0` size will disable the buffer. When the limit is reached and a new log is add stumpy will remove the oldest log. Default: `0`.
-* `formatFunc` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
+* `formatFunc(log<Object>, logInstanceOptions<Object>)` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
 * `getTrace` - Boolean to enable/disable capture of trace info on each log. Default: `false`.
 * `showTrace` - Boolean to enable/disable show trace info on each log. `getTrace` will be set to true if this is set to true. Default: `false`.
 * `deepCopy` - Boolean to enable/disable deep copy of objects stored in the buffer. The default is false to consume less memory, however objects are referenced so they could change from the original log. Default: `false`.
@@ -120,16 +132,28 @@ The all options have defaults.
 * `prod` - An Object for the `prod` environment. Default: `display: { log: false, info: false, warn: false, error: true, trace: true, group: false, groupEnd: false }`.
 
 
+## Event Handler Options
+
+The all options have defaults of no handlers.
+
+* `addLog(logStr<String>, logObj<Object>)` - A Function that will be called when a log is added. It will call the function formatting the logStr using `options.formatFunc`. Default: `null`.
+* `delLog(logStr<String>, logObj<Object>)` - A Function that will be called when a log is deleted from the Buffer. It will call the function formatting the logStr using `options.formatFunc`. Default: `null`.
+* `addBuffer(logStr<String>, logObj<Object>)` - A Function that will be called when a log is added. It will call the function formatting the logStr using `options.buffer.formatFunc`. Default: `null`.
+* `delBuffer(logStr<String>, logObj<Object>)` - A Function that will be called when a log is deleted from the Buffer. It will call the function formatting the logStr using `options.buffer.formatFunc`. Default: `null`.
+
 
 ## Examples
 
-[Browser - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/browser/hellocharlie.html)
+# Browser
 
-[Browser - Basic](https://github.com/jstty/stumpy/blob/master/examples/browser/basic.html)
+* [Browser very simple example](https://github.com/jstty/stumpy/blob/master/examples/browser/hellocharlie.html)
+* [Browser example using Custom Formatting](https://github.com/jstty/stumpy/blob/master/examples/browser/custom.html)
 
-[NodeJS - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/node/hellocharlie.js)
 
-[NodeJS - Basic](https://github.com/jstty/stumpy/blob/master/examples/node/basic.js)
+# NodeJS
+
+* [NodeJS example using Replace Console, Sync Logs, Show Trace, Show Log Id and Show Log Type](https://github.com/jstty/stumpy/blob/master/examples/node/showntell.js)
+* [NodeJS example using Custom Formatting and Event Handlers](https://github.com/jstty/stumpy/blob/master/examples/node/mrbucket.js)
 
 
 
