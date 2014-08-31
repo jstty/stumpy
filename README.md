@@ -28,177 +28,114 @@ $ npm install stumpy
 $ bower install stumpy
 ```
 
-## Usage
-
-### Hello Charlie!
+## Even a Cat can do it
 ```js
 var stumpy = Stumpy();
 
-stumpy.log("test");
-stumpy.info("test: %s", "string");
-stumpy.warn("test: %d", 123);
-stumpy.error("test error: %d", 123);
+stumpy.log("look for prey");
+stumpy.info("sleep %f hours", 8.62);
+stumpy.warn("kill %d mice in a day", 26);
+stumpy.error("miss target");
 ```
 
-### Buffered Output
-```js
-var stumpy = Stumpy("basic", {
-    showTrace: true,
-    buffer: {
-        size: 8,
-        showTrace: true
-    }
-});
+## Stumpy - Functions
 
-console.log("----------------------------------------------------------");
-console.log("-- Stumpy - Buffered Output --");
-console.log("----------------------------------------------------------");
-stumpy.log("test");
-stumpy.info("test: %s", "string");
-stumpy.warn("test: %d", 123);
-stumpy.error("test error: %d", 123);
-stumpy.trace("test trace: %s", "string");
+* `log(...)` - Add/display a log. See (console.log)[https://developer.mozilla.org/en-US/docs/Web/API/console.log] Options
+* `warn(...)` - Add/display a warning. See (console.warn)[https://developer.mozilla.org/en-US/docs/Web/API/console.warn] Options
+* `error(...)` - Add/display a error. See (console.error)[https://developer.mozilla.org/en-US/docs/Web/API/console.error] Options
+* `info(...)` - Add/display a info. See (console.info)[https://developer.mozilla.org/en-US/docs/Web/API/console.info] Options
+* `trace(...)` - Add/display a trace. See (console.trace)[https://developer.mozilla.org/en-US/docs/Web/API/console.trace] Options
+* `group([name])` - Add/display a group. Optional `name` (default: `group`).
+* `groupEnd()` - Add/display a groupEnd. No parameters.
+* `clearBuffer()` - Clears the in memory buffer.
+* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`.
+* `getRawBuffer()` - Returns the raw buffer (Array of Objects) with all the captured data.
+* `printBuffer()` - Prints each log in the buffer using the `formatFunc`.
 
-stumpy.log("before group");
+## Stumpy(options)
 
-stumpy.group();
-    stumpy.log("test group log", "Group", 1);
-    stumpy.warn("test group warn", { obj: "Group1" } );
-    stumpy.error("test group error: %d", 123);
+The first argument can be either an `options` object or a `name` string followed by an `options` object.
+The all options have defaults.
 
-    stumpy.group("test group 2");
-        stumpy.log("test", "Group", 2);
-        stumpy.warn("test", { obj: "Group2" } );
-    stumpy.groupEnd();
+* `name` - String used to when displaying a log. Default: `""`.
+* `env` - String used to determine schema to use. which Default: `"dev"`.
+* `replaceConsole` - Boolean to enable/disable replace the `console` global object with Stumpy. Default: `false`.
+* `getTrace` - Boolean to enable/disable capture the trace info for each log. Default: `false`.
+* `showTrace` - Boolean to enable/disable display of the trace info on each log. If this is set to `true`, `getTrace` will be set to `true`. Default: `false`.
+* `showDateTime` - Boolean to enable/disable display of the date and time on each log. Default: `false` if Broweser, `true` if NodeJS.
+* `showLogId` - Boolean to enable/disable display of the log id. The Id's are unique for each log per session, when the browser/server restarts the Id is reset. Default: `false`.
+* `showLogType` - Boolean to enable/disable display of the log type ('log', 'warn', 'error', 'info', 'trace', 'group', or 'groupEnd'). Default: `false`.
+* `syncLogs` - Boolean to enable/disable display of the synchronous logs. Warning: current version errors are sent to stdout NOT stderr. Default: `false`.
+* `display` - Boolean or Object. If set to `true`, all display options are set to true. The Object is a key:value map of all the logging types. Default: `{ log: true,  info: true,  warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`
+* `formatFunc` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
+* `colors` - See [Colors](#colors) Options
+* `group` - See [Group](#group) Options
+* `buffer` - See [Buffer](#buffer) Options
+* `schema` - See [Schema](#schema) Options
 
-stumpy.groupEnd();
+## Stumpy - Colors Options
 
-stumpy.log( { after: "group", a: [1,2,3,4,5,6,7,8,9,0] } );
+See [Cli-Color](https://github.com/medikoo/cli-color) for color values
+The all options have defaults.
 
-console.log("----------------------------------------------------------");
-console.log("-- Dumping Buffered Output --");
-console.log("----------------------------------------------------------");
-var dump = stumpy.getBuffer();
-console.log( dump.join("\n") );
+* `log` - String or Cli-Color Object. Default: `"whiteBright"`
+* `info` - String or Cli-Color Object. Default: `"blue"`
+* `warn` - String or Cli-Color Object. Default: `"yellow"`
+* `error` - String or Cli-Color Object. Default: `"red"`
+* `trace` - String or Cli-Color Object. Default: `"magenta"`
+* `group` - String or Cli-Color Object. Default: `"green"`
+* `groupEnd` - String or Cli-Color Object. Default: `"green"`
 
-console.log("----------------------------------------------------------");
-console.log("-- Pretty Printing Buffered Output --");
-console.log("----------------------------------------------------------");
-stumpy.printBuffer();
 
-console.log("----------------------------------------------------------");
-console.log("-- Dumping Raw Buffered Output --");
-console.log("----------------------------------------------------------");
-var rawdump = stumpy.getRawBuffer();
-console.log( rawdump );
-```
+## Stumpy - Group Options
 
-### Custom Format
-```js
-var stumpy = Stumpy("basic", {
-    display: true,
-    formatFunc: function(options, log) {
-        var out = [];
-        var a = 0;
+Used to generate the Group Trees for NodeJS
+The all options have defaults.
 
-        // add time
-        var td = moment().format('YYYY-MM-DD HH:mm:ssZ');
+* `autoIndent` - Boolean value enabling/disabling Group Trees. Default: `true`
+* `indent` - Object containing the string parts used to the Group Tree for NodeJS
 
-        // if first arg is string add time to it to support % replacement
-        if(typeof log.args[0] === "string") {
-            out.push( "["+td+"] "+options.name+" - " + log.args[0] );
-            a++;
-        } else {
-            out.push("["+td+"] "+options.name+" - ");
-        }
 
-        // add args
-        for(; a < log.args.length; a++) {
-            // if show time, and first item
-            out.push( log.args[a] );
-        }
+## Stumpy - Buffer Options
 
-        return out;
-    }
-	,buffer: {
-		size: 8,
-        showTrace: true,
-        formatFunc: function(options, log) {
-            var out = [];
-            var a = 0;
+Used to configure the buffer.
+The all options have defaults.
 
-            // add time
-            var td = moment(log.date).format('h:mm:ss a');
+* `size` - Integer size of the log buffer. A `0` size will disable the buffer. When the limit is reached and a new log is add stumpy will remove the oldest log. Default: `0`.
+* `formatFunc` - The function used to format the logs when `getBuffer` is called. If you wish to get the unformatted buffer use `getRawBuffer`. Default: `null`.
+* `getTrace` - Boolean to enable/disable capture of trace info on each log. Default: `false`.
+* `showTrace` - Boolean to enable/disable show trace info on each log. `getTrace` will be set to true if this is set to true. Default: `false`.
+* `deepCopy` - Boolean to enable/disable deep copy of objects stored in the buffer. The default is false to consume less memory, however objects are referenced so they could change from the original log. Default: `false`.
 
-            // if first arg is string add time to it to support % replacement
-            if(typeof log.args[0] === "string") {
-                out.push( td + " - " + log.args[0] );
-                a++;
-            } else {
-                out.push(td + " - ");
-            }
 
-            // add args
-            for(; a < log.args.length; a++) {
-                // if show time, and first item
-                out.push( log.args[a] );
-            }
+## Stumpy - Schema Options
 
-            // show trace
-            if(log.trace) {
-                out.push("-> " + log.trace );
-            }
+Used to configure the environment schemas. This is an object of environments, default: `dev`,`stage`, and `prod`.
+When an `env` string is set, all keys in the matching schema key are applied over all other options in the base options.
+The all options have defaults.
 
-            return out;
-        }
-	}
-});
+* `dev` - An Object for the `dev` environment. Default: `display: { log: true,  info: true,  warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`.
+* `stage` - An Object for the `stage` environment. Default: `display: { log: false, info: false, warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`.
+* `prod` - An Object for the `prod` environment. Default: `display: { log: false, info: false, warn: false, error: true, trace: true, group: false, groupEnd: false }`.
 
-console.log("----------------------------------------------------------");
-console.log("-- Stumpy - Custom Format --");
-console.log("----------------------------------------------------------");
-stumpy.log("test");
-stumpy.info("test: %s", "string");
-stumpy.warn("test: %d", 123);
-stumpy.error("test error: %d", 123);
-stumpy.trace("test trace: %s", "string");
 
-stumpy.log("before group");
 
-stumpy.group();
-    stumpy.log("test group log", "Group", 1);
-    stumpy.warn("test group warn", { obj: "Group1" } );
-    stumpy.error("test group error: %d", 123);
+## Stumpy - Examples
 
-    stumpy.group("test group 2");
-        stumpy.log("test", "Group", 2);
-        stumpy.warn("test", { obj: "Group2" } );
-    stumpy.groupEnd();
+[Browser - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/browser/hellocharlie.html)
+[Browser - Basic](https://github.com/jstty/stumpy/blob/master/examples/browser/basic.html)
 
-stumpy.groupEnd();
+[NodeJS - Hello Charlie](https://github.com/jstty/stumpy/blob/master/examples/node/hellocharlie.js)
+[NodeJS - Basic](https://github.com/jstty/stumpy/blob/master/examples/node/basic.js)
 
-stumpy.log( { after: "group", a: [1,2,3,4,5,6,7,8,9,0] } );
 
-console.log("----------------------------------------------------------");
-console.log("-- Dumping Buffered Output --");
-console.log("----------------------------------------------------------");
-var dump = stumpy.getBuffer();
-dump = dump.join("\n");
-console.log(dump);
+## License
 
-console.log("----------------------------------------------------------");
-console.log("-- Pretty Printing Buffered Output --");
-console.log("----------------------------------------------------------");
-stumpy.printBuffer();
+What else?
+MIT: http://rem.mit-license.org
 
-console.log("----------------------------------------------------------");
-console.log("-- Dumping Raw Buffered Output --");
-console.log("----------------------------------------------------------");
-var rawdump = stumpy.getRawBuffer();
-console.log(rawdump);
-```
 
-## Tests
+## Blah blah blah... Tests
 
 ### Mocha
 ```sh
