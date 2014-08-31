@@ -79,7 +79,7 @@ The all options have defaults.
 * `group([name])` - Add/display a group. Optional `name` (default: `group`).
 * `groupEnd()` - Add/display a groupEnd. No parameters.
 * `clearBuffer()` - Clears the in memory buffer.
-* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`. Warning browser users: `getBuffer()` may not return expected results unless you include the (sprintf)[https://github.com/alexei/sprintf.js] library.
+* `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`. Warning browser users: `getBuffer()` may not return expected results unless you include the <a href="https://github.com/alexei/sprintf.js">sprintf</a> library.
 * `getRawBuffer()` - Returns the raw buffer (Array of Objects) with all the captured data.
 * `printBuffer()` - Prints each log in the buffer using the `formatFunc`.
 * `setEnv()` - Sets the current environment and applies the schema.
@@ -147,7 +147,7 @@ The all options have defaults of no handlers.
 # Browser
 
 * [Browser very simple example](https://github.com/jstty/stumpy/blob/master/examples/browser/hellocharlie.html)
-* [Browser example using Custom Formatting](https://github.com/jstty/stumpy/blob/master/examples/browser/custom.html)
+* [Browser example using Custom Formatting and Handlers](https://github.com/jstty/stumpy/blob/master/examples/browser/handy.html)
 
 
 # NodeJS

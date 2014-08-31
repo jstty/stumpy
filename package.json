@@ -41,6 +41,7 @@
     "scripts": {
         "test":         "mocha",
         "test-browser": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
-        "build":        "./node_modules/uglify-js/bin/uglifyjs lib/stumpy.js -o lib/stumpy-min.js --stats"
+        "pretest":      "./node_modules/uglify-js/bin/uglifyjs lib/stumpy.js -o lib/stumpy-min.js --stats",
+        "prepublish":   "./node_modules/uglify-js/bin/uglifyjs lib/stumpy.js -o lib/stumpy-min.js --stats"
     }
 }
