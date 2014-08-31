@@ -1,13 +1,13 @@
 {
     "name": "Stumpy",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "main": "lib/stumpy.js",
     "ignore": [
         "node_modules",
         ".*"
     ],
     "dependencies": {
-        "sprintf": "~0.0.7"
+        "sprintf": "~1.0.0"
     },
     "devDependencies": {
         "mocha": "~1.18.2",
