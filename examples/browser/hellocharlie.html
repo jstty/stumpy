@@ -1,0 +1,39 @@
+<html>
+<script src="../../lib/stumpy.js"></script>
+<script src="moment.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<pre id="stumpy">-- Stumpy - Hello Charlie! --
+Look at the console
+</pre>
+
+<script>
+
+var stumpy = Stumpy("Hello Charlie!");
+
+console.log("----------------------------------------------------------");
+console.log("-- Log Output --");
+console.log("----------------------------------------------------------");
+stumpy.log("test");
+stumpy.info("test: %s", "string");
+stumpy.warn("test: %d", 123);
+stumpy.error("test error: %d", 123);
+stumpy.trace("test trace: %s", "string");
+
+stumpy.log("before group");
+
+stumpy.group();
+    stumpy.log("test group log", "Group", 1);
+    stumpy.warn("test group warn", { obj: "Group1" } );
+    stumpy.error("test group error: %d", 123);
+
+    stumpy.group("test group 2");
+        stumpy.log("test", "Group", 2);
+        stumpy.warn("test", { obj: "Group2" } );
+    stumpy.groupEnd();
+
+stumpy.groupEnd();
+
+stumpy.log( { after: "group", a: [1,2,3,4,5,6,7,8,9,0] } );
+
+</script>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "webserver",
+  "version": "0.0.1",
+  "description": "A basic webserver",
+  "author": "me!",
+  "dependencies": {
+    "connect": "~2.8.1"
+  }
+}
