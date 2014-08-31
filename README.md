@@ -3,13 +3,20 @@
 
 ## Features
 * Highly configurable
+* Module based Log Names
+    * Different module can be given a name to make it easier to find the culprit
 * Buffered Output
-* Custom Log format
-* Schemas based on Environments
-* NodeJs Only, sorry browsers
-  * Groups (with pretty tree style)
-  * Colors!
-  * Optional All Logs Async (even Errors)
+    * Allows you to ship the logs off to the local sawmill or whittle a cat out of them
+* Customizable Log Format
+    * Standard output across all parts of your application
+* Schemas Based on Environments
+* NodeJs Only (sorry browser people)
+  * Groups (pretty trees O^O)
+  * Colors (double rainbows!)
+  * Optional All Logs Synchronise
+    * Warning: current version errors are sent to stdout NOT stderr
+    * Future version will fix this
+  * All Logs with Trace Information
 
 ## NPM
 ```sh
