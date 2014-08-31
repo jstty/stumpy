@@ -1,5 +1,4 @@
-var Stumpy   = require('../../lib/stumpy.js');
-
+var Stumpy = require('../../lib/stumpy.js');
 var stumpy = Stumpy("basic", {
     showTrace: true,
     showLogId: true,
