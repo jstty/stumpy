@@ -23,10 +23,10 @@ console.group();
     console.warn("test group warn", { obj: "Group1" } );
     console.error("test group error: %d", 123);
 
-    console.group("test group 2");
+    console.group("start test group 2");
         console.log("test", "Group", 2);
-    console.warn("test", { obj: "Group2" } );
-console.groupEnd();
+        console.warn("test", { obj: "Group2" } );
+    console.groupEnd("end test group 2");
 
 console.groupEnd();
 

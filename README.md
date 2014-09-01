@@ -77,7 +77,7 @@ The all options have defaults.
 * `info(...)` - Add/display a info. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.info" target="_blank">console.info</a> Options
 * `trace(...)` - Add/display a trace. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/console.trace" target="_blank">console.trace</a> Options
 * `group([name])` - Add/display a group. Optional `name` (default: `group`).
-* `groupEnd()` - Add/display a groupEnd. No parameters.
+* `groupEnd([name])` - Add/display a groupEnd. Optional `name` (default: same `name` as group).
 * `clearBuffer()` - Clears the in memory buffer.
 * `getBuffer()` - Returns an Array of Strings after running each log thought the `buffer.formatFunc`. Warning browser users: `getBuffer()` may not return expected results unless you include the <a href="https://github.com/alexei/sprintf.js">sprintf</a> library.
 * `getRawBuffer()` - Returns the raw buffer (Array of Objects) with all the captured data.

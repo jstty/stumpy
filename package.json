@@ -1,7 +1,7 @@
 {
     "name": "stumpy",
-    "version": "0.6.0",
-    "description": "The Kickass logger",
+    "version": "0.6.1",
+    "description": "The Kickass Logger",
     "keywords": [
         "node.js",
         "javascript",
