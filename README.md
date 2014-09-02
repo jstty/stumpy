@@ -21,6 +21,8 @@
 
 ## In the Year 2000... (Distant Future Features)
 * A String version of the Customizable Log Format
+* Custom Log Type (eg. `stumpy.cheese({shape:'block',color:'yellow'})`)
+* Customizable Log Format per Log Type
 * Transports for both NodeJs and Browser
 * Fix NodeJs Logs Synchronise to send output errors using stderr (small buffer)
 * Global and per instance Buffers
