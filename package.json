@@ -15,6 +15,13 @@
         "email": "joe@jstty.com",
         "web": "http://www.jstty.com"
     },
+    "maintainers": [
+        {
+            "name": "Joseph E. Sutton",
+            "email": "joe@jstty.com"
+        }
+    ],
+    "main": "index.js",
     "license": {
         "type": "MIT"
     },
