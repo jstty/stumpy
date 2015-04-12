@@ -11,6 +11,7 @@ console.log("----------------------------------------------------------");
 console.log("-- Stumpy - Show EVERYTHING --");
 console.log("----------------------------------------------------------");
 console.log("test");
+
 console.info("test: %s", "string");
 console.warn("test: %d", 123);
 console.error("test error: %d", 123);
