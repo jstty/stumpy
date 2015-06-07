@@ -30,20 +30,20 @@
     "url": "http://github.com/jstty/stumpy.git"
   },
   "dependencies": {
-    "cli-color": "^1.0.0",
-    "sprintf-js": "^1.0.2",
-    "stack-trace": "^0.0.9"
+    "cli-color": "~1.0.0",
+    "sprintf-js": "~1.0.2",
+    "stack-trace": "~0.0.9"
   },
   "devDependencies": {
-    "bower": "^1.4.1",
-    "chai": "^3.0.0",
-    "karma": "^0.12.36",
-    "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^0.1.12",
-    "karma-mocha": "^0.1.10",
-    "karma-phantomjs-launcher": "^0.2.0",
-    "mocha": "^2.2.5",
-    "uglify-js": "^2.4.23"
+    "bower": "~1.4.1",
+    "chai": "~3.0.0",
+    "karma": "~0.12.36",
+    "karma-chai": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.12",
+    "karma-mocha": "~0.1.10",
+    "karma-phantomjs-launcher": "~0.2.0",
+    "mocha": "~2.2.5",
+    "uglify-js": "~2.4.23"
   },
   "scripts": {
     "test": "mocha",
