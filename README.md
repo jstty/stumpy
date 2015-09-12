@@ -1,5 +1,11 @@
-# Stumpy - The Kickass Logger!
-[![Build Status](https://secure.travis-ci.org/jstty/stumpy.png)](http://travis-ci.org/jstty/stumpy) [![Dependency Status](https://david-dm.org/jstty/stumpy.png?theme=shields.io)](https://david-dm.org/jstty/stumpy) [![devDependency Status](https://david-dm.org/jstty/stumpy/dev-status.png?theme=shields.io)](https://david-dm.org/jstty/stumpy#info=devDependencies) [![NPM](https://nodei.co/npm/stumpy.png)](https://nodei.co/npm/stumpy/)
+# Stumpy - The Kickass Logger! [![Build Status](https://secure.travis-ci.org/jstty/stumpy.png)](http://travis-ci.org/jstty/stumpy)
+[![bitHound Score](https://www.bithound.io/github/jstty/stumpy/badges/score.svg?branch=master)](https://www.bithound.io/github/jstty/stumpy)
+[![Coverage Status](https://coveralls.io/repos/jstty/stumpy/badge.svg?branch=master&service=github)](https://coveralls.io/github/jstty/stumpy?branch=master)
+![License](https://img.shields.io/npm/l/stumpy.svg)
+
+[![Dependency Status](https://david-dm.org/jstty/stumpy.png?theme=shields.io)](https://david-dm.org/jstty/stumpy)
+[![devDependency Status](https://david-dm.org/jstty/stumpy/dev-status.png?theme=shields.io)](https://david-dm.org/jstty/stumpy#info=devDependencies)
+[![NPM](https://nodei.co/npm/stumpy.png)](https://nodei.co/npm/stumpy/)
 
 ## Features
 * Highly Configurable
@@ -18,14 +24,19 @@
     * Warning: current version errors are sent to stdout NOT stderr
   * All Logs with Trace Information
 
-
-## In the Year 2000... (Distant Future Features)
-* A String version of the Customizable Log Format
-* Custom Log Type (eg. `stumpy.cheese({shape:'block',color:'yellow'})`)
-* Customizable Log Format per Log Type
-* Transports for both NodeJs and Browser
-* Fix NodeJs Logs Synchronise to send output errors using stderr (small buffer)
-* Global and per instance Buffers
+## In the Year 3000... (Future Features)
+[/] Improve code quality
+    [ ] Create test framework
+        [ ] Spawn a process to run the tests and compare the output
+        [ ] Use examples as first set of tests
+    [x] Add code coverage (istanbul + coveralls)
+    [x] Add static analysis of code
+[ ] A String version of the Customizable Log Format
+[ ] Custom Log Type (eg. `stumpy.cheese({shape:'block',color:'yellow'})`)
+[ ] Customizable Log Format per Log Type
+[ ] Transports for both NodeJs and Browser
+[ ] Fix NodeJs Logs Synchronise to send output errors using stderr (small buffer?)
+[ ] Global and per instance Buffers
 
 
 ## NPM

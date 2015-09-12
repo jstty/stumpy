@@ -4,6 +4,7 @@
     "main": "lib/stumpy.js",
     "ignore": [
         "node_modules",
+        "test/.coverage",
         ".*"
     ],
     "dependencies": {
