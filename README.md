@@ -25,18 +25,18 @@
   * All Logs with Trace Information
 
 ## In the Year 3000... (Future Features)
-[/] Improve code quality
-    [ ] Create test framework
-        [ ] Spawn a process to run the tests and compare the output
-        [ ] Use examples as first set of tests
-    [x] Add code coverage (istanbul + coveralls)
-    [x] Add static analysis of code
-[ ] A String version of the Customizable Log Format
-[ ] Custom Log Type (eg. `stumpy.cheese({shape:'block',color:'yellow'})`)
-[ ] Customizable Log Format per Log Type
-[ ] Transports for both NodeJs and Browser
-[ ] Fix NodeJs Logs Synchronise to send output errors using stderr (small buffer?)
-[ ] Global and per instance Buffers
+* [/] Improve code quality
+    * [ ] Create test framework
+        * [ ] Spawn a process to run the tests and compare the output
+        * [ ] Use examples as first set of tests
+    * [x] Add code coverage (istanbul + coveralls)
+    * [x] Add static analysis of code
+* [ ] A String version of the Customizable Log Format
+* [ ] Custom Log Type (eg. `stumpy.cheese({shape:'block',color:'yellow'})`)
+* [ ] Customizable Log Format per Log Type
+* [ ] Transports for both NodeJs and Browser
+* [ ] Fix NodeJs Logs Synchronise to send output errors using stderr (small buffer?)
+* [ ] Global and per instance Buffers
 
 
 ## NPM
