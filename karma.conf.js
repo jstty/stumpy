@@ -1,4 +1,5 @@
 // Karma configuration
+require('phantomjs-prebuilt').path = './node_modules/.bin/phantomjs';
 
 module.exports = function(config) {
     config.set({
@@ -23,7 +24,7 @@ module.exports = function(config) {
         ],
         browsers: [
             //'Chrome',
-            'PhantomJS'
+            'phantomjs'
         ]
     });
 };

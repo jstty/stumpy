@@ -4,7 +4,11 @@ var stumpy = Stumpy("Show EVERYTHING", {
     showTrace: true,
     showLogId: true,
     showLogType: true,
-    syncLogs: true // warning: this will not write logs to stderr
+    syncLogs: true, // warning: this will not write logs to stderr,
+    colors: { 
+        group: 'blue',
+        groupEnd: 'blue'
+    }
 });
 
 console.log("----------------------------------------------------------");
