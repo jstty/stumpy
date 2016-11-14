@@ -74,7 +74,8 @@ The all options have defaults.
 * `showLogType` - Boolean to enable/disable display of the log type ('log', 'warn', 'error', 'info', 'trace', 'group', or 'groupEnd'). Default: `false`.
 * `syncLogs` - Boolean to enable/disable display of the synchronous logs. Warning: current version errors are sent to stdout NOT stderr. Default: `false`.
 * `display` - Boolean or Object. If set to `true`, all display options are set to true. The Object is a key:value map of all the logging types. Default: `{ log: true,  info: true,  warn:  true, error: true, trace: true, group:  true, groupEnd:  true }`
-* `formatFunc(log<Object>, logInstanceOptions<Object>)` - The Function used to format the logs when `getBuffer`, `onHandlers.addLog` and `onHandlers.delLog` is called or on all log output. Default: `null`.
+* `formatFunc(log<Object>, logInstanceOptions<Object>)` - The Function used to format the logs when `getBuffer`, `onHandlers.addLog` and `onHandlers.delLog` is called or on all log output. Default: built in function for server and browser.
+* `dateStringFunc(date<Date Object>)` - This Function formats the data object to a string for logging.  Default: built in DateString function.
 * `onHandlers` - An Object. See [Event Handler](#event-handler-options) Options
 * `colors` - An Object. See [Colors](#colors-options) Options
 * `group` - An Object. See [Group](#group-options) Options
