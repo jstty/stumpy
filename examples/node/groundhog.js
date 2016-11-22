@@ -1,6 +1,6 @@
 var Stumpy = require('../../lib/stumpy.js');
 var stumpy = Stumpy("Mr Stumpy");
-var shadow = stumpy.shadow("My Shadow");
+var shadow = stumpy.shadow({"name": "My Shadow", "env": "dev"});
 
 stumpy.log("----------------------------------------------------------");
 stumpy.log("-- Stumpy - Shadow --");
